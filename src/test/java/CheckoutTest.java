@@ -22,6 +22,7 @@ public class CheckoutTest extends Basetest {
         driver.findElement(By.id("postal-code")).sendKeys("222073");
         driver.findElement(By.id("continue")).click();
         String totalPrice = driver.findElement(By.cssSelector(".summary_total_label")).getText();
+        assertTrue(driver.findElement(By.xpath("//div[text()='Sauce Labs Backpack']")).isDisplayed());
         assertEquals(totalPrice.split(" ")[1], "$32.39");
         driver.findElement(By.id("finish")).click();
         assertEquals(driver.findElement(By.cssSelector(".complete-header")).getText(), "THANK YOU FOR YOUR ORDER");
