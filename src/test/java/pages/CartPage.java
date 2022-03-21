@@ -2,20 +2,17 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 
 public class CartPage extends BasePage {
-    String productInTheCartLocator = "//div[text()='%s']";
-    String priceInTheCartLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//div[@class='inventory_item_price']";
-    By checkoutButton = By.id("checkout");
-    By finishButton = By.id("finish");
-    String removeButtonLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//button";
-    By firstNameLocator = By.id("first-name"),
-            lastNameLocator = By.id("last-name"),
-            zipCodeLocator = By.id("postal-code"),
-            continueButton = By.id("continue");
-    By finalPriceLocator = By.cssSelector(".summary_total_label");
-    By finalMessage = By.cssSelector(".complete-header");
+    public static final By CHECKOUT_BUTTON = By.id("checkout"),
+            CONTINUE_SHOPPING_BUTTON = By.id("continue-shopping");
+    String productLocator = "//div[text()='%s']",
+            priceLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//div[@class='inventory_item_price']",
+            removeButtonLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//button";
 
 
     public CartPage(WebDriver driver) {
@@ -31,34 +28,28 @@ public class CartPage extends BasePage {
     }
 
     public String getPrice(String nameProduct) {
-        return driver.findElement(By.xpath(String.format(priceInTheCartLocator, nameProduct))).getText();
+        return driver.findElement(By.xpath(String.format(priceLocator, nameProduct))).getText();
     }
 
-    public boolean checkingTheProductInTheCart(String nameProduct) {
-        return driver.findElement(By.xpath(String.format(productInTheCartLocator, nameProduct))).isDisplayed();
+    public int getCountElement() {
+        List<WebElement> element = driver.findElements(By.cssSelector(".cart_item"));
+        return element.size();
     }
 
-    public boolean checkingTheRemovalOfTheProduct(String nameProduct) {
-        int c = driver.findElements(By.xpath(String.format(productInTheCartLocator, nameProduct))).size();
-        return c == 0 ? true : false;
+    public void clickCheckoutButton() {
+        driver.findElement(CHECKOUT_BUTTON).click();
     }
 
-    public void checkout(String firstName, String lastName, String zipCode) {
-        driver.findElement(checkoutButton).click();
-        driver.findElement(firstNameLocator).sendKeys(firstName);
-        driver.findElement(lastNameLocator).sendKeys(lastName);
-        driver.findElement(zipCodeLocator).sendKeys(zipCode);
-        driver.findElement(continueButton).click();
+    public void clickContinueShoppingButton() {
+        driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
     }
 
-    public String getFinalPrice() {
-        return driver.findElement(finalPriceLocator).getText().split(" ")[1];
+    public boolean checkProductInCart(String nameProduct) {
+        List<WebElement> element = driver.findElements(By.cssSelector(".inventory_item_name"));
+        boolean contains = false;
+        for (WebElement webElement : element) {
+            if (webElement.getText().equals(nameProduct)) contains = true;
+        }
+        return contains;
     }
-
-    public String gettingTheResultMessage() {
-        driver.findElement(finishButton).click();
-        return driver.findElement(finalMessage).getText();
-    }
-
-
 }
