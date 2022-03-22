@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductPage extends BasePage {
 
@@ -18,6 +19,7 @@ public class ProductPage extends BasePage {
 
     public void open(int numberProduct) {
         driver.get(baseUrl + linkProduct + Integer.toString(numberProduct));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_PRICE));
     }
 
     public String getProductPrice() {

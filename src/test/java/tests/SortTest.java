@@ -9,7 +9,7 @@ public class SortTest extends BaseTest{
 
     public void checkingSorting(String sorting, String firstNameProduct, String lastNameProduct){
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productsPage.sort(sorting);
         assertEquals(productsPage.getNameElementByNumber(5), firstNameProduct);
         assertEquals(productsPage.getNameElementByNumber(0), lastNameProduct);

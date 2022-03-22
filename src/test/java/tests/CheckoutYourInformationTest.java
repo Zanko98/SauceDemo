@@ -7,7 +7,7 @@ public class CheckoutYourInformationTest extends BaseTest{
 
     public void setFieldsAndCompareError(String firstName, String lastName, String zipCode) {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         cartPage.open();
         cartPage.clickCheckoutButton();
         checkoutYourInformationPage.setYourInformation(firstName, lastName, zipCode);

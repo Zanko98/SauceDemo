@@ -9,7 +9,7 @@ public class CheckoutTest extends BaseTest {
     @Test
     public void orderingProduct() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productsPage.addToCart("Sauce Labs Bike Light");
         cartPage.open();
         cartPage.clickCheckoutButton();

@@ -9,7 +9,7 @@ public class CartTest extends BaseTest {
     @Test
     public void productsShouldBeAddedIntoCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productsPage.addToCart("Sauce Labs Bike Light");
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         cartPage.open();
@@ -21,7 +21,7 @@ public class CartTest extends BaseTest {
     @Test
     public void productShouldBeRemoveIntoCart() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productsPage.addToCart("Sauce Labs Bike Light");
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         cartPage.open();
@@ -33,7 +33,7 @@ public class CartTest extends BaseTest {
     @Test
     public void continueShoppingButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         cartPage.open();
         cartPage.clickContinueShoppingButton();
         assertEquals(headerContainerPage.getNameHeadPage(), "PRODUCTS");
@@ -42,7 +42,7 @@ public class CartTest extends BaseTest {
     @Test
     public void checkoutButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         cartPage.open();
         cartPage.clickCheckoutButton();
         assertEquals(headerContainerPage.getNameHeadPage(), "CHECKOUT: YOUR INFORMATION");

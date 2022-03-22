@@ -10,7 +10,7 @@ public class HeaderContainerTest extends BaseTest {
     @Test
     public void logOutMenuButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         headerContainerPage.clickMenuButton();
         menuPage.clickButton(MenuPage.LOGOUT_BUTTON);
         assertTrue(loginPage.loginButtonShouldBeDisplayed());
@@ -19,7 +19,7 @@ public class HeaderContainerTest extends BaseTest {
     @Test
     public void allItemsMenuButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         cartPage.open();
         headerContainerPage.clickMenuButton();
         menuPage.clickButton(MenuPage.ALL_ITEMS_BUTTON);
@@ -29,7 +29,7 @@ public class HeaderContainerTest extends BaseTest {
     @Test
     public void resetAppSateMenuButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productsPage.addToCart("Sauce Labs Bike Light");
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         assertEquals(headerContainerPage.getCountProductInCart(), "2");
@@ -43,7 +43,7 @@ public class HeaderContainerTest extends BaseTest {
     @Test
     public void shoppingCartButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         headerContainerPage.clickOnCartButton();
         assertEquals(headerContainerPage.getNameHeadPage(), "YOUR CART");
     }
@@ -51,7 +51,7 @@ public class HeaderContainerTest extends BaseTest {
     @Test
     public void backToProductButtonTest() {
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productPage.open(1);
         headerContainerPage.clickOnBackToProductsButton();
         assertEquals(headerContainerPage.getNameHeadPage(), "PRODUCTS");

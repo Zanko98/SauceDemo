@@ -9,7 +9,7 @@ public class ProductTest extends BaseTest{
     @Test
     public void addToCartButton(){
         loginPage.open();
-        loginPage.login("standard_user", "secret_sauce");
+        loginPage.login(NAME, "secret_sauce");
         productPage.open(1);
         assertEquals(productPage.getProductName(), "Sauce Labs Bolt T-Shirt");
         assertEquals(productPage.getProductPrice(), "$15.99");
