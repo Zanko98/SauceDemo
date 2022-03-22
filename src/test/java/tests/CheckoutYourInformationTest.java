@@ -1,9 +1,10 @@
 package tests;
 
 import org.testng.annotations.Test;
+
 import static org.testng.AssertJUnit.assertEquals;
 
-public class CheckoutYourInformationTest extends BaseTest{
+public class CheckoutYourInformationTest extends BaseTest {
 
     public void setFieldsAndCompareError(String firstName, String lastName, String zipCode) {
         loginPage.open();

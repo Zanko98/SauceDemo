@@ -1,13 +1,14 @@
 package tests;
 
 import org.testng.annotations.Test;
+
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertFalse;
 
-public class ProductTest extends BaseTest{
+public class ProductTest extends BaseTest {
 
     @Test
-    public void addToCartButton(){
+    public void addToCartButton() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
         productPage.open(1);

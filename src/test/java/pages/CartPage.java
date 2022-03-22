@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
@@ -12,8 +11,8 @@ import java.util.List;
 public class CartPage extends BasePage {
     public static final By CHECKOUT_BUTTON = By.id("checkout"),
             CONTINUE_SHOPPING_BUTTON = By.id("continue-shopping"),
-    PRODUCT_NAME = By.cssSelector(".inventory_item_name"),
-    PRODUCT_LOCATOR = By.cssSelector(".cart_item");
+            PRODUCT_NAME = By.cssSelector(".inventory_item_name"),
+            PRODUCT_LOCATOR = By.cssSelector(".cart_item");
     String productLocator = "//div[text()='%s']",
             priceLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//div[@class='inventory_item_price']",
             removeButtonLocator = "//div[text()='%s']/ancestor::div[@class='cart_item_label']//button";

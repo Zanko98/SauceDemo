@@ -5,9 +5,9 @@ import org.testng.annotations.Test;
 import static org.testng.AssertJUnit.assertEquals;
 
 
-public class SortTest extends BaseTest{
+public class SortTest extends BaseTest {
 
-    public void checkingSorting(String sorting, String firstNameProduct, String lastNameProduct){
+    public void checkingSorting(String sorting, String firstNameProduct, String lastNameProduct) {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
         productsPage.sort(sorting);

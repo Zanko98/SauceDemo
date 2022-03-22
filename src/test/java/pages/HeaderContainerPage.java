@@ -40,7 +40,7 @@ public class HeaderContainerPage extends BasePage {
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         int numberOfElements = driver.findElements(NUMBER_PRODUCTS_IN_CART).size();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        return numberOfElements==0 ? false : true;
+        return numberOfElements != 0;
     }
 
 }

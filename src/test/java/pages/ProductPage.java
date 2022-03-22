@@ -18,7 +18,7 @@ public class ProductPage extends BasePage {
     }
 
     public void open(int numberProduct) {
-        driver.get(baseUrl + linkProduct + Integer.toString(numberProduct));
+        driver.get(baseUrl + linkProduct + numberProduct);
         wait.until(ExpectedConditions.visibilityOfElementLocated(PRODUCT_PRICE));
     }
 

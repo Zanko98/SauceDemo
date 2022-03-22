@@ -12,7 +12,7 @@ public class CheckoutCompletePage extends BasePage {
     }
 
     public String getFinalMessage() {
-       return driver.findElement(FINAL_MESSAGE).getText();
+        return driver.findElement(FINAL_MESSAGE).getText();
     }
 
     public void clickBackHomeButton() {
