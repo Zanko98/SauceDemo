@@ -7,7 +7,7 @@ import static org.testng.AssertJUnit.assertFalse;
 
 public class ProductTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка отображения информации о товаре и кликабельности кнопок \"Add to cart/Remove\" на странице товара")
     public void addToCartButton() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");

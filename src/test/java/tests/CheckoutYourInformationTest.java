@@ -1,41 +1,40 @@
 package tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
 public class CheckoutYourInformationTest extends BaseTest {
 
-    public void setFieldsAndCompareError(String firstName, String lastName, String zipCode) {
+    @DataProvider(name = "Входящие данные для негативных тестов на формы YourInformation")
+    public Object[][] inputForFieldsYourInformationShouldNotBeEmptyTest() {
+        return new Object[][]{
+                {"", "a", "a", "Error: First Name is required"},
+                {"a", "", "a", "Error: Last Name is required"},
+                {"a", "a", "", "Error: Postal Code is required"}
+        };
+    }
+
+    @Test(dataProvider = "Входящие данные для негативных тестов на формы YourInformation")
+    public void FieldsYourInformationShouldNotBeEmpty(String firstName, String lastName, String zipCode, String error) {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
         cartPage.open();
         cartPage.clickCheckoutButton();
         checkoutYourInformationPage.setYourInformation(firstName, lastName, zipCode);
         checkoutYourInformationPage.clickOnTheContinueButton();
+        assertEquals(checkoutYourInformationPage.getErrorMessage(), error);
     }
 
-    @Test
-    public void firstNameShouldBeEmptyTest() {
-        setFieldsAndCompareError("", "a", "a");
-        assertEquals(checkoutYourInformationPage.getErrorMessage(), "Error: First Name is required");
-    }
-
-    @Test
-    public void lastNameShouldBeEmptyTest() {
-        setFieldsAndCompareError("a", "", "a");
-        assertEquals(checkoutYourInformationPage.getErrorMessage(), "Error: Last Name is required");
-    }
-
-    @Test
-    public void zipCodeShouldBeEmptyTest() {
-        setFieldsAndCompareError("a", "a", "");
-        assertEquals(checkoutYourInformationPage.getErrorMessage(), "Error: Postal Code is required");
-    }
-
-    @Test
+    @Test(description = "Проверка кнопки \"Continue\" на странице \"CHECKOUT: YOUR INFORMATION\"")
     public void continueButtonTest() {
-        setFieldsAndCompareError("a", "a", "a");
+        loginPage.open();
+        loginPage.login(NAME, "secret_sauce");
+        cartPage.open();
+        cartPage.clickCheckoutButton();
+        checkoutYourInformationPage.setYourInformation("a", "a", "a");
+        checkoutYourInformationPage.clickOnTheContinueButton();
         assertEquals(headerContainerPage.getNameHeadPage(), "CHECKOUT: OVERVIEW");
     }
 }

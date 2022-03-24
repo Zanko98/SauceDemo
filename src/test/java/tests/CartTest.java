@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка добавления продукта в корзину")
     public void productsShouldBeAddedIntoCart() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -18,7 +18,7 @@ public class CartTest extends BaseTest {
         assertEquals(cartPage.getPrice("Sauce Labs Bike Light"), "$9.99");
     }
 
-    @Test
+    @Test(description = "Проверка удаления продукта из корзины")
     public void productShouldBeRemoveIntoCart() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -30,7 +30,7 @@ public class CartTest extends BaseTest {
         assertEquals(cartPage.getCountElement(), 1);
     }
 
-    @Test
+    @Test(description = "Проверка кнопки \"Continue\" в корзине")
     public void continueShoppingButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -39,7 +39,7 @@ public class CartTest extends BaseTest {
         assertEquals(headerContainerPage.getNameHeadPage(), "PRODUCTS");
     }
 
-    @Test
+    @Test(description = "Проверка кнопки \"Checkout\" в корзине")
     public void checkoutButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
