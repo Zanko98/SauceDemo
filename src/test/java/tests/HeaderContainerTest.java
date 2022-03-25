@@ -7,7 +7,7 @@ import static org.testng.AssertJUnit.*;
 
 public class HeaderContainerTest extends BaseTest {
 
-    @Test
+    @Test(description = "Проверка кнопки меню \"Logout\"")
     public void logOutMenuButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -16,7 +16,7 @@ public class HeaderContainerTest extends BaseTest {
         assertTrue(loginPage.loginButtonShouldBeDisplayed());
     }
 
-    @Test
+    @Test(description = "Проверка кнопки меню \"All Items\"")
     public void allItemsMenuButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -26,7 +26,7 @@ public class HeaderContainerTest extends BaseTest {
         assertEquals(headerContainerPage.getNameHeadPage(), "PRODUCTS");
     }
 
-    @Test
+    @Test(description = "Проверка кнопки меню \"Reset App State\"")
     public void resetAppSateMenuButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -40,7 +40,7 @@ public class HeaderContainerTest extends BaseTest {
         assertFalse(headerContainerPage.checkingTheDisplayOfCountProductOnCartBadge());
     }
 
-    @Test
+    @Test(description = "Проверка кликабельности иконки корзины в заголовке")
     public void shoppingCartButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");
@@ -48,7 +48,7 @@ public class HeaderContainerTest extends BaseTest {
         assertEquals(headerContainerPage.getNameHeadPage(), "YOUR CART");
     }
 
-    @Test
+    @Test(description = "Проверка кнопки \"Back to products\" на странице товара")
     public void backToProductButtonTest() {
         loginPage.open();
         loginPage.login(NAME, "secret_sauce");

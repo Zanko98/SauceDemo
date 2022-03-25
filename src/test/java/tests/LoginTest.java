@@ -1,36 +1,26 @@
 package tests;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class LoginTest extends BaseTest {
 
-    @Test
-    public void passwordShouldBeRequired() {
-        loginPage.open();
-        loginPage.login("test", "");
-        assertEquals(loginPage.getError(), "Epic sadface: Password is required");
+    @DataProvider(name = "Входящие данные для негативных тестов на логин")
+    public Object[][] loginDate() {
+        return new Object[][]{
+                {"test", "", "Epic sadface: Password is required"},
+                {"", "test", "Epic sadface: Username is required"},
+                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
+                {"Marina", "secret_sauce", "Epic sadface: Username and password do not match any user in this service"}
+        };
     }
 
-    @Test
-    public void userNameShouldBeRequired() {
+    @Test(dataProvider = "Входящие данные для негативных тестов на логин")
+    public void test123(String name, String password, String error) {
         loginPage.open();
-        loginPage.login("", "test");
-        assertEquals(loginPage.getError(), "Epic sadface: Username is required");
-    }
-
-    @Test
-    public void lockedOutUser() {
-        loginPage.open();
-        loginPage.login("locked_out_user", "secret_sauce");
-        assertEquals(loginPage.getError(), "Epic sadface: Sorry, this user has been locked out.");
-    }
-
-    @Test
-    public void unregisteredUser() {
-        loginPage.open();
-        loginPage.login("Marina", "secret_sauce");
-        assertEquals(loginPage.getError(), "Epic sadface: Username and password do not match any user in this service");
+        loginPage.login(name, password);
+        assertEquals(loginPage.getError(), error, "Сообщение об ошибке при логине некорректное");
     }
 }
