@@ -1,6 +1,5 @@
 package tests;
 
-import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -39,8 +38,8 @@ public class TestListener implements ITestListener {
 
     private void takeScreenshot(ITestResult iTestResult) {
         ITestContext context = iTestResult.getTestContext();
-            WebDriver driver = (WebDriver) context.getAttribute("driver");
-                AllureUtils.takeScreenshot(driver);
+        WebDriver driver = (WebDriver) context.getAttribute("driver");
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Override
