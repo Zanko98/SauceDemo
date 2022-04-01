@@ -37,18 +37,10 @@ public class TestListener implements ITestListener {
         takeScreenshot(iTestResult);
     }
 
-    private byte[] takeScreenshot(ITestResult iTestResult) {
+    private void takeScreenshot(ITestResult iTestResult) {
         ITestContext context = iTestResult.getTestContext();
-        try {
             WebDriver driver = (WebDriver) context.getAttribute("driver");
-            if (driver != null) {
-                return AllureUtils.takeScreenshot(driver);
-            } else {
-                return new byte[]{};
-            }
-        } catch (NoSuchSessionException | IllegalStateException ex) {
-            return new byte[]{};
-        }
+                AllureUtils.takeScreenshot(driver);
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ProductsPage extends BasePage {
         driver.findElement(By.xpath(String.format(addToCartButton, product))).click();
     }
 
-    @Step("Removing a {product} product to the cart")
+    @Step("Removing a {product} product from the cart")
     public void removeCart(String product) {
         driver.findElement(By.xpath(String.format(removeButton, product))).click();
     }
