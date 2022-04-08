@@ -1,8 +1,10 @@
 package tests;
 
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import utils.AllureUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -18,17 +20,26 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult iTestResult) {
         System.out.println(String.format("====================================FINISHED TEST %s Duration: %ss ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
+        takeScreenshot(iTestResult);
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
         System.out.println(String.format("==================================== FAILED TEST %s Duration: %ss ========================================", iTestResult.getName(),
                 getExecutionTime(iTestResult)));
+        takeScreenshot(iTestResult);
     }
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
         System.out.println(String.format("==================================== SKIPPING TEST %s ========================================", iTestResult.getName()));
+        takeScreenshot(iTestResult);
+    }
+
+    private void takeScreenshot(ITestResult iTestResult) {
+        ITestContext context = iTestResult.getTestContext();
+        WebDriver driver = (WebDriver) context.getAttribute("driver");
+        AllureUtils.takeScreenshot(driver);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +13,7 @@ public class MenuPage extends BasePage {
         super(driver);
     }
 
+    @Step("click on the {nameButton} button")
     public void clickButton(By nameButton) {
         driver.findElement(nameButton).click();
     }

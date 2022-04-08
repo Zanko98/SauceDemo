@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest {
     }
 
     @Test(dataProvider = "Входящие данные для негативных тестов на логин")
-    public void test123(String name, String password, String error) {
+    public void loginTest(String name, String password, String error) {
         loginPage.open();
         loginPage.login(name, password);
         assertEquals(loginPage.getError(), error, "Сообщение об ошибке при логине некорректное");
