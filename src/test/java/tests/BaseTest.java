@@ -62,6 +62,8 @@ public class BaseTest {
 
     @AfterMethod(alwaysRun = true)
     public void close() {
-        driver.quit();
+        if(driver != null) {
+            driver.quit();
+        }
     }
 }
