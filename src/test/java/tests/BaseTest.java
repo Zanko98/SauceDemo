@@ -36,7 +36,7 @@ public class BaseTest {
         if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.setHeadless(true);
+            options.addArguments("--headless");
             driver = new ChromeDriver(options);
         } else if (browser.equalsIgnoreCase("safari")) {
             WebDriverManager.safaridriver().setup();
